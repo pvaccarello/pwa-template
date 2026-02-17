@@ -5,17 +5,13 @@ Template pronto all'uso per creare Progressive Web App funzionanti su **Android*
 ## Quick Start
 
 ```bash
-# 1. Copia questa cartella e rinominala
-cp -r pwa-template my-new-app
-cd my-new-app
-
-# 2. Installa le dipendenze
+# 1. Installa le dipendenze
 npm install
 cd functions && npm install && cd ..
 
-# 3. Configura Firebase (vedi checklist sotto)
+# 2. Configura Firebase (vedi checklist sotto)
 
-# 4. Avvia in sviluppo
+# 3. Avvia in sviluppo
 npm run dev
 ```
 
