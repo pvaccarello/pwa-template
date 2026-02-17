@@ -1,0 +1,27 @@
+{
+  "short_name": "MyPWA",
+  "name": "My PWA App",
+  "description": "TODO: Descrizione della tua app",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "id": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "window-controls-overlay"],
+  "theme_color": "#4f46e5",
+  "background_color": "#f3f4f6",
+  "gcm_sender_id": "103953800507"
+}

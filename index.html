@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- TODO: Cambia il titolo della tua app -->
+    <title>My PWA App</title>
+
+    <!-- ========== PWA: Manifest e Theme Color ========== -->
+    <!-- fetchpriority="high" assicura che il manifest venga caricato subito -->
+    <link rel="manifest" href="/manifest.json" fetchpriority="high" />
+    <!-- TODO: Cambia il colore tema con il colore primario della tua app -->
+    <meta name="theme-color" content="#4f46e5" />
+
+    <!-- ========== iOS PWA: Meta tags Apple ========== -->
+    <!-- Questi meta tag sono ESSENZIALI per far funzionare la PWA su iPhone/iPad -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- TODO: Cambia con il nome della tua app -->
+    <meta name="apple-mobile-web-app-title" content="My PWA App" />
+    <!-- black-translucent: la status bar diventa trasparente (effetto immersivo) -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- TODO: Sostituisci con le tue icone. Servono piu' dimensioni per diversi dispositivi iOS -->
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon-precomposed" href="/icons/icon-192x192.png" />
+
+    <!-- ========== CSS: Tailwind via CDN ========== -->
+    <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+    <!-- ========== Firebase: SDK via CDN (compat) ========== -->
+    <!-- Usiamo la versione "compat" per semplicita'. Non serve npm install. -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js"></script>
+  </head>
+
+  <body class="bg-gray-100 dark:bg-slate-900">
+    <div id="root"></div>
+    <script type="module" src="./src/index.tsx"></script>
+
+    <!-- ========== Service Worker: Registrazione ========== -->
+    <!-- Il SW gestisce: caching offline, notifiche push in background, click su notifiche -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('/firebase-messaging-sw.js')
+            .then((registration) => {
+              console.log('Service Worker registrato con successo:', registration);
+            })
+            .catch((error) => {
+              console.log('Registrazione del Service Worker fallita:', error);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
